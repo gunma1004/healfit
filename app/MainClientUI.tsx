@@ -120,7 +120,7 @@ const localShops = [
     name: "💎 주주테라피",
     desc: "재방문율 1위 만족도! 철저한 위생 관리와 감성 충만 프라이빗 힐링 코스",
     phone: "0507-1280-3193",
-    price: "70,000원부터~",
+    price: "60,000원부터~",
     image: "/shop3.jpg"
   },
   {
@@ -128,7 +128,7 @@ const localShops = [
     name: "👑 퀸즈홈테라피",
     desc: "여왕처럼 누리는 프리미엄 바디케어! 전문 힐러들의 1:1 VIP 힐링 프로그램",
     phone: "0507-1280-3334",
-    price: "70,000원부터~",
+    price: "60,000원부터~",
     image: "/shop4.jpg"
   },
   {
@@ -187,7 +187,7 @@ export default function MainClientUI() {
     const districtObj = regionData[selectedRegion]?.districts[selectedDistrict];
     const districtName = districtObj ? districtObj.name : selectedDistrict;
     
-    const baseUrl = `/location/${selectedRegion}/${encodeURIComponent(districtName)}`;
+    const baseUrl = `/${selectedRegion}/${encodeURIComponent(districtName)}`;
     const targetUrl = selectedDong 
       ? `${baseUrl}?dong=${encodeURIComponent(selectedDong)}` 
       : baseUrl;
@@ -201,10 +201,9 @@ export default function MainClientUI() {
   return (
     <div className="bg-[#08080a] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black">
       
-      {/* 메인 비주얼 히어로 섹션 */}
       <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-12">
         
-        {/* 상단 배너 */}
+        {/* 1. 상단 히어로 메인 배너 */}
         <section className="text-center my-2">
           <div className="overflow-hidden rounded-3xl border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.15)] relative h-64 md:h-84 flex items-center justify-center p-6 bg-gradient-to-b from-neutral-900 to-[#08080a]">
             <div className="absolute inset-0 z-0">
@@ -230,12 +229,54 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 내 동네 빠른 검색 박스 */}
-        <section className="pt-2">
+        {/* 2. 🔥 프리미엄 추천 제휴 파트너 (BEST 5) - 최상단 우선 노출로 CTR 극대화 */}
+        <section className="space-y-6">
+          <div className="text-center mb-6">
+            <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">BEST PARTNER SHOPS</p>
+            <h2 className="text-xl md:text-2xl font-black text-white mt-1">
+              🏆 힐핏 추천 프리미엄 제휴점 (BEST 5)
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {localShops.map((lShop) => (
+              <div key={lShop.id} className="bg-[#121216] border border-amber-500/20 hover:border-amber-500/60 rounded-2xl p-4 flex gap-4 items-center shadow-md transition-all group relative">
+                
+                <Link href={`/shop/${lShop.id}`} className="absolute inset-0 z-10" aria-label={`${lShop.name} 상세페이지 보기`} />
+
+                <img 
+                  src={lShop.image} 
+                  alt={lShop.name} 
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover border border-white/10 group-hover:scale-105 transition-transform" 
+                />
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-extrabold text-sm md:text-base text-white truncate group-hover:text-amber-400 transition-colors">
+                    {lShop.name}
+                  </h3>
+                  <p className="text-[11px] text-gray-400 mt-1 line-clamp-2">
+                    {lShop.desc}
+                  </p>
+                  <div className="mt-2.5 flex items-center justify-between">
+                    <span className="text-xs font-black text-amber-400">{lShop.price}</span>
+                    <a 
+                      href={`tel:${lShop.phone}`} 
+                      className="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow transition-colors relative z-20"
+                    >
+                      전화예약
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 3. 📍 내 동네/세부 구·동 검색 박스 (업체 카드 다음 순서로 배치) */}
+        <section className="pt-4">
           <div className="bg-gradient-to-b from-[#141418] to-[#0d0d10] border-2 border-amber-500/40 p-6 md:p-8 rounded-3xl max-w-xl mx-auto shadow-[0_10px_35px_rgba(0,0,0,0.8)] text-left relative overflow-hidden">
             <div className="flex items-center justify-between mb-5">
               <label className="text-sm text-amber-400 font-black uppercase tracking-wider flex items-center gap-2">
-                📍 내 주변 맞춤 테라피 찾기
+                📍 내 동네 상세 지역 테라피 찾기
               </label>
               <span className="text-[11px] text-gray-300 bg-black/50 px-3 py-1 rounded-lg border border-white/10">
                 수도권 전지역 지원
@@ -301,49 +342,7 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 프리미엄 추천 제휴 파트너 (요청하신 5곳 적용) */}
-        <section className="space-y-6">
-          <div className="text-center mb-6">
-            <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">BEST PARTNER SHOPS</p>
-            <h2 className="text-xl md:text-2xl font-black text-white mt-1">
-              🏆 힐핏 추천 프리미엄 제휴점 (BEST 5)
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {localShops.map((lShop) => (
-              <div key={lShop.id} className="bg-[#121216] border border-amber-500/20 hover:border-amber-500/60 rounded-2xl p-4 flex gap-4 items-center shadow-md transition-all group relative">
-                
-                <Link href={`/shop/${lShop.id}`} className="absolute inset-0 z-10" aria-label={`${lShop.name} 상세페이지 보기`} />
-
-                <img 
-                  src={lShop.image} 
-                  alt={lShop.name} 
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover border border-white/10 group-hover:scale-105 transition-transform" 
-                />
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-extrabold text-sm md:text-base text-white truncate group-hover:text-amber-400 transition-colors">
-                    {lShop.name}
-                  </h3>
-                  <p className="text-[11px] text-gray-400 mt-1 line-clamp-2">
-                    {lShop.desc}
-                  </p>
-                  <div className="mt-2.5 flex items-center justify-between">
-                    <span className="text-xs font-black text-amber-400">{lShop.price}</span>
-                    <a 
-                      href={`tel:${lShop.phone}`} 
-                      className="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow transition-colors relative z-20"
-                    >
-                      전화예약
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 힐핏 이용 안내 4단계 */}
+        {/* 4. 힐핏 이용 안내 4단계 */}
         <section className="bg-[#0f0f13] border border-amber-500/30 p-6 md:p-8 rounded-3xl space-y-6">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">SERVICE PROCESS</span>
@@ -373,7 +372,7 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 고객 실제 후기 */}
+        {/* 5. 고객 실제 후기 */}
         <section className="space-y-4">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">CUSTOMER REVIEWS</span>
@@ -401,7 +400,7 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 자주 묻는 질문 (FAQ) */}
+        {/* 6. 자주 묻는 질문 (FAQ) */}
         <section className="space-y-4">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">FAQ & GUIDE</span>
