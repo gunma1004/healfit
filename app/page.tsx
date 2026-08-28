@@ -2,23 +2,47 @@ import { Metadata } from "next";
 import MainClientUI from "./MainClientUI";
 
 export const metadata: Metadata = {
-  // 스팸 필터를 우회하기 위해 자연스러운 띄어쓰기 및 대체어(홈케어/바디케어) 믹스
-  title: "건마사랑 | 서울·경기·인천 24시 방문 홈케어 & 힐링 테라피 안내",
-  description: "서울, 경기, 인천 전지역 25분 내 신속 방문! 선입금 없는 100% 안심 후불제 예약. 프리미엄 타이, 아로마, 스웨디시 제휴업체 정보 안내.",
+  title: "힐핏 (HealFit) | 서울·경기·인천 프리미엄 힐링 & 바디케어 플랫폼",
+  // 네이버 모바일/PC 최적 노출 글자 수 (공백 포함 75~80자 내외) 및 CTR 극대화 문구
+  description: "서울·경기·인천 100% 검증 힐링 테라피 힐핏! 타이, 아로마, 스웨디시 전문 제휴점 가격비교와 실시간 맞춤 바디케어 정보를 확인하세요.",
   keywords: [
-    "서울 홈케어",
-    "경기 홈케어",
-    "인천 홈케어",
-    "수도권 방문 테라피",
-    "출장 마사지", // 띄어쓰기로 스팸 탐지 유연화
-    "후불제 바디케어",
-    "24시 힐링 케어",
-    "건마사랑"
+    "힐핏",
+    "HealFit",
+    "마사지플랫폼",
+    "바디케어",
+    "타이테라피",
+    "아로마마사지",
+    "스웨디시",
+    "서울마사지",
+    "경기마사지",
+    "인천마사지",
+    "힐링테라피",
+    "프리미엄스파"
   ],
+  alternates: {
+    canonical: "https://healfitmassage.netlify.app",
+  },
   openGraph: {
-    title: "건마사랑 | 서울·경기·인천 24시 방문 홈케어 추천",
-    description: "선입금 없는 100% 후불 안심 케어! 수도권 전지역 25분 내 빠른 방문 바디케어 정보를 확인하세요.",
-    url: "https://gunmasarang-massage4.vercel.app", // 변경된 새 도메인 적용
+    title: "힐핏(HealFit) | 서울·경기·인천 프리미엄 바디케어 플랫폼",
+    description: "내 주변 검증된 테라피 샵 정보 총집합! 타이, 아로마, 스웨디시 맞춤 힐링 케어를 힐핏에서 바로 만나보세요.",
+    url: "https://healfitmassage.netlify.app",
+    siteName: "힐핏(HealFit)",
+    locale: "ko_KR",
+    type: "website",
+    images: [
+      {
+        url: "/og-main.png",
+        width: 1200,
+        height: 630,
+        alt: "힐핏 - 프리미엄 힐링 & 바디케어 플랫폼",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "힐핏 (HealFit) | 서울·경기·인천 프리미엄 바디케어",
+    description: "서울·경기·인천 검증된 테라피 제휴 정보 및 프리미엄 힐링 가이드",
+    images: ["/og-main.png"],
   },
 };
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 // 서울·경기·인천 전지역 데이터
-const regionData: Record<string, { name: string; districts: Record<string, { name: string; dongs: string[] }> }> = {
+export const regionData: Record<string, { name: string; districts: Record<string, { name: string; dongs: string[] }> }> = {
   seoul: {
     name: "서울특별시",
     districts: {
@@ -101,41 +101,41 @@ const regionData: Record<string, { name: string; districts: Record<string, { nam
 const localShops = [
   {
     id: 1,
-    name: "🔥 한국미녀홈타이",
-    desc: "서울·경기·인천 전지역 신속 방문! 정성 가득한 테라피 & 릴렉싱 프로그램",
-    phone: "0507-1280-3299",
-    price: "90,000원부터~",
+    name: "✨ 한국골든테라피",
+    desc: "서울·경기·인천 전지역 신속 케어! VIP 골든 릴렉싱 & 딥티슈 피로회복 전문",
+    phone: "0507-1280-3361",
+    price: "80,000원부터~",
     image: "/shop1.jpg"
   },
   {
     id: 2,
-    name: "✨ 너무이쁜홈타이",
-    desc: "품격 있는 힐링을 선사하는 최고급 오일 프라이빗 방문 테라피 서비스",
-    phone: "0507-1280-3190",
-    price: "60,000원부터~",
+    name: "🌸 한국미인테라피",
+    desc: "품격 있는 힐링을 선사하는 최고급 천연 오일 스웨디시 & 아로마 맞춤 케어",
+    phone: "0507-1280-3303",
+    price: "70,000원부터~",
     image: "/shop2.jpg"
   },
   {
     id: 3,
-    name: "💎 예쁜걸홈타이",
-    desc: "재방문율 1위! 칼도착 25분 보장, 철저한 위생 관리와 럭셔리 케어",
-    phone: "0507-1280-3185",
-    price: "60,000원부터~",
+    name: "💎 주주테라피",
+    desc: "재방문율 1위 만족도! 철저한 위생 관리와 감성 충만 프라이빗 힐링 코스",
+    phone: "0507-1280-3193",
+    price: "70,000원부터~",
     image: "/shop3.jpg"
   },
   {
     id: 4,
-    name: "🌟 20대프리미엄홈케어",
-    desc: "전문 힐러들의 맞춤형 VIP 피로회복 특화 프로그램 진행 중",
-    phone: "0507-1280-3222",
-    price: "60,000원부터~",
+    name: "👑 퀸즈홈테라피",
+    desc: "여왕처럼 누리는 프리미엄 바디케어! 전문 힐러들의 1:1 VIP 힐링 프로그램",
+    phone: "0507-1280-3334",
+    price: "70,000원부터~",
     image: "/shop4.jpg"
   },
   {
     id: 5,
-    name: "👑 20대그녀의온도홈타이",
-    desc: "선입금 없는 100% 후불제! 수도권 전지역 평균 25분 내 실시간 도착",
-    phone: "0507-1280-3292",
+    name: "🌙 오늘밤테라피",
+    desc: "100% 안심 후불제! 지친 일상 끝에 완벽한 휴식을 선사하는 야간 맞춤 테라피",
+    phone: "0507-1280-3223",
     price: "60,000원부터~",
     image: "/shop5.jpg"
   }
@@ -144,19 +144,19 @@ const localShops = [
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="bg-black/60 rounded-2xl border border-white/5 overflow-hidden transition-colors">
+    <div className="bg-[#121214] rounded-2xl border border-white/5 overflow-hidden transition-all hover:border-amber-500/20">
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="w-full p-4 text-left flex justify-between items-center font-bold text-sm text-gray-200 hover:text-amber-400 transition-colors"
       >
         <span className="flex items-center gap-2">
-          <span className="text-amber-400">Q.</span> {question}
+          <span className="text-amber-400 font-extrabold">Q.</span> {question}
         </span>
         <span className="text-amber-400 font-extrabold text-lg">{isOpen ? "−" : "+"}</span>
       </button>
       {isOpen && (
         <div className="px-4 pb-4 text-xs text-gray-300 leading-relaxed border-t border-white/5 pt-3 bg-black/40">
-          <span className="text-red-400 font-bold">A. </span>{answer}
+          <span className="text-emerald-400 font-bold">A. </span>{answer}
         </div>
       )}
     </div>
@@ -181,16 +181,13 @@ export default function MainClientUI() {
 
   const handleSearch = () => {
     if (!selectedDistrict) {
-      alert("원하시는 지역(구/시)을 먼저 선택해주세요!");
+      alert("원하시는 지역(구/시/군)을 먼저 선택해주세요!");
       return;
     }
     const districtObj = regionData[selectedRegion]?.districts[selectedDistrict];
     const districtName = districtObj ? districtObj.name : selectedDistrict;
     
-    // 별도의 [dong] 경로 생성 없이 항상 구/시 경로만 이동
-    const baseUrl = `/${selectedRegion}/${encodeURIComponent(districtName)}`;
-    
-    // 선택된 동이 있다면 쿼리 파라미터로 전달 (필요 시 해당 구 페이지에서 텍스트로 표시 및 텍스트 검색에 활용 가능)
+    const baseUrl = `/location/${selectedRegion}/${encodeURIComponent(districtName)}`;
     const targetUrl = selectedDong 
       ? `${baseUrl}?dong=${encodeURIComponent(selectedDong)}` 
       : baseUrl;
@@ -202,77 +199,120 @@ export default function MainClientUI() {
   const currentDongs = selectedDistrict && currentDistricts[selectedDistrict] ? currentDistricts[selectedDistrict].dongs : [];
 
   return (
-    <div className="bg-[#050505] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black">
+    <div className="bg-[#08080a] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black">
       
-      {/* 상단 헤더 */}
-      <header className="sticky top-0 z-50 bg-[#050505]/85 backdrop-blur-xl border-b border-amber-500/20 px-4 py-3.5 shadow-[0_4px_20px_rgba(245,158,11,0.1)]">
-        <div className="max-w-4xl mx-auto flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3 group">
-            <img 
-              src="/logo.png" 
-              alt="건마사랑 로고" 
-              className="w-10 h-10 rounded-xl object-cover border border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.4)] group-hover:scale-105 transition-transform" 
-            />
-            <div className="flex flex-col">
-              <span className="text-xl font-black tracking-wider bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
-                건마사랑
-              </span>
-              <span className="text-[10px] text-gray-400 tracking-tighter">SEOUL · GYEONGGI · INCHEON</span>
-            </div>
-          </Link>
-          
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-            </span>
-            <span className="text-xs px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-red-500/20 text-amber-300 border border-amber-500/30 font-bold shadow-inner">
-              🔥 24시 실시간 영업중
-            </span>
-          </div>
-        </div>
-      </header>
-
+      {/* 메인 비주얼 히어로 섹션 */}
       <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-12">
         
-        {/* 상단 메인 배너 */}
+        {/* 상단 배너 */}
         <section className="text-center my-2">
-          <div className="overflow-hidden rounded-3xl border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.15)] relative h-60 md:h-80 flex items-center justify-center p-6">
+          <div className="overflow-hidden rounded-3xl border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.15)] relative h-64 md:h-84 flex items-center justify-center p-6 bg-gradient-to-b from-neutral-900 to-[#08080a]">
             <div className="absolute inset-0 z-0">
               <img 
                 src="/banner.jpg" 
-                alt="메인 힐링 배너" 
+                alt="힐핏 프리미엄 스파 테라피 배너" 
                 className="w-full h-full object-cover filter brightness-[0.35] scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#08080a] via-black/40 to-transparent"></div>
             </div>
             
             <div className="relative z-10 space-y-3">
-              <span className="inline-block px-4 py-1 rounded-full bg-amber-500 text-black font-extrabold text-xs tracking-widest shadow-lg animate-bounce">
-                ✨ 100% 후불제 안심 보장 시스템
+              <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-xs tracking-wider shadow-lg">
+                ✨ 수도권 검증된 힐링 & 테라피 제휴 네트워크
               </span>
               <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight drop-shadow-lg">
-                서울·경기·인천 <span className="bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">25분 내 신속 방문 케어</span>
+                서울·경기·인천 <span className="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">프리미엄 힐링 바디케어</span>
               </h1>
-              <p className="text-gray-200 text-xs md:text-sm font-medium max-w-lg mx-auto drop-shadow">
-                엄선된 최고급 베테랑 관리사의 프라이빗 피로회복 프로그램! 지금 바로 내 주변 제휴업체를 만나보세요.
+              <p className="text-gray-200 text-xs md:text-sm font-medium max-w-lg mx-auto drop-shadow leading-relaxed">
+                엄선된 전문 테라피스트의 프라이빗 피로회복 & 웰니스 프로그램! 지금 바로 내 주변 맞춤 케어를 만나보세요.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 메인 추천 제휴업체 5개 박스 카드리스트 */}
+        {/* 내 동네 빠른 검색 박스 */}
+        <section className="pt-2">
+          <div className="bg-gradient-to-b from-[#141418] to-[#0d0d10] border-2 border-amber-500/40 p-6 md:p-8 rounded-3xl max-w-xl mx-auto shadow-[0_10px_35px_rgba(0,0,0,0.8)] text-left relative overflow-hidden">
+            <div className="flex items-center justify-between mb-5">
+              <label className="text-sm text-amber-400 font-black uppercase tracking-wider flex items-center gap-2">
+                📍 내 주변 맞춤 테라피 찾기
+              </label>
+              <span className="text-[11px] text-gray-300 bg-black/50 px-3 py-1 rounded-lg border border-white/10">
+                수도권 전지역 지원
+              </span>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <span className="text-xs text-gray-400 block mb-1.5 font-semibold">1단계: 시·도 선택</span>
+                <select 
+                  value={selectedRegion} 
+                  onChange={handleRegionChange} 
+                  className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/30 focus:border-amber-400 transition-colors shadow-inner"
+                >
+                  {Object.keys(regionData).map((key) => (
+                    <option key={key} value={key} className="bg-[#1e1e1e] text-white">
+                      {regionData[key].name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <span className="text-xs text-gray-400 block mb-1.5 font-semibold">2단계: 구·시·군 선택</span>
+                <select 
+                  value={selectedDistrict} 
+                  onChange={handleDistrictChange} 
+                  className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/30 focus:border-amber-400 transition-colors shadow-inner"
+                >
+                  <option value="" className="bg-[#1e1e1e] text-gray-400">구 / 시 / 군을 선택해주세요</option>
+                  {Object.keys(currentDistricts).map((dKey) => (
+                    <option key={dKey} value={dKey} className="bg-[#1e1e1e] text-white">
+                      {currentDistricts[dKey].name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <span className="text-xs text-gray-400 block mb-1.5 font-semibold">3단계: 동 선택 (상세 지역)</span>
+                <select 
+                  value={selectedDong} 
+                  onChange={(e) => setSelectedDong(e.target.value)} 
+                  disabled={!selectedDistrict}
+                  className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-medium p-3.5 rounded-xl border border-amber-500/30 disabled:opacity-30 transition-colors shadow-inner"
+                >
+                  <option value="" className="bg-[#1e1e1e] text-gray-400">동 전체 보기</option>
+                  {currentDongs.map((dong, idx) => (
+                    <option key={idx} value={dong} className="bg-[#1e1e1e] text-white">
+                      {dong}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <button 
+                onClick={handleSearch}
+                className="w-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black py-4 rounded-2xl text-sm transition-all shadow-[0_0_25px_rgba(245,158,11,0.4)] mt-4 cursor-pointer transform active:scale-[0.98]"
+              >
+                🔍 선택 지역 테라피 안내 보기
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* 프리미엄 추천 제휴 파트너 (요청하신 5곳 적용) */}
         <section className="space-y-6">
           <div className="text-center mb-6">
-            <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">BEST RECOMMENDED SHOPS</p>
+            <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">BEST PARTNER SHOPS</p>
             <h2 className="text-xl md:text-2xl font-black text-white mt-1">
-              🏆 건마사랑 최고의 추천 제휴업체 (5곳)
+              🏆 힐핏 추천 프리미엄 제휴점 (BEST 5)
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {localShops.map((lShop) => (
-              <div key={lShop.id} className="bg-[#121214] border border-amber-500/20 hover:border-amber-500/60 rounded-2xl p-4 flex gap-4 items-center shadow-md transition-all group relative">
+              <div key={lShop.id} className="bg-[#121216] border border-amber-500/20 hover:border-amber-500/60 rounded-2xl p-4 flex gap-4 items-center shadow-md transition-all group relative">
                 
                 <Link href={`/shop/${lShop.id}`} className="absolute inset-0 z-10" aria-label={`${lShop.name} 상세페이지 보기`} />
 
@@ -294,7 +334,7 @@ export default function MainClientUI() {
                       href={`tel:${lShop.phone}`} 
                       className="bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow transition-colors relative z-20"
                     >
-                      전화연결
+                      전화예약
                     </a>
                   </div>
                 </div>
@@ -303,103 +343,32 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 지역 선택 박스 */}
-        <section className="pt-6 border-t border-white/10">
-          <div className="bg-gradient-to-b from-[#18181b] to-[#0f0f11] border-2 border-amber-500/40 p-6 rounded-3xl max-w-xl mx-auto shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-left relative overflow-hidden">
-            <div className="flex items-center justify-between mb-4">
-              <label className="text-xs text-amber-400 font-black uppercase tracking-wider flex items-center gap-1.5">
-                📍 내 동네 검색 및 이동하기
-              </label>
-              <span className="text-[11px] text-gray-400 bg-black/40 px-2.5 py-1 rounded-lg border border-white/5">
-                지역 전용 화면 이동
-              </span>
-            </div>
-
-            <div className="space-y-3.5">
-              <div>
-                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">1단계: 시·도 선택</span>
-                <select 
-                  value={selectedRegion} 
-                  onChange={handleRegionChange} 
-                  className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/30 focus:border-amber-400 transition-colors shadow-inner"
-                >
-                  {Object.keys(regionData).map((key) => (
-                    <option key={key} value={key} className="bg-[#1e1e1e] text-white">
-                      {regionData[key].name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">2단계: 구·시·군 선택</span>
-                <select 
-                  value={selectedDistrict} 
-                  onChange={handleDistrictChange} 
-                  className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-bold p-3.5 rounded-xl border border-amber-500/30 focus:border-amber-400 transition-colors shadow-inner"
-                >
-                  <option value="" className="bg-[#1e1e1e] text-gray-400">구 / 시 / 군을 선택해주세요</option>
-                  {Object.keys(currentDistricts).map((dKey) => (
-                    <option key={dKey} value={dKey} className="bg-[#1e1e1e] text-white">
-                      {currentDistricts[dKey].name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <span className="text-[11px] text-gray-400 block mb-1 font-semibold">3단계: 동 선택 (텍스트 필터)</span>
-                <select 
-                  value={selectedDong} 
-                  onChange={(e) => setSelectedDong(e.target.value)} 
-                  disabled={!selectedDistrict}
-                  className="bg-black/80 text-sm text-white w-full outline-none cursor-pointer font-medium p-3.5 rounded-xl border border-amber-500/30 disabled:opacity-30 transition-colors shadow-inner"
-                >
-                  <option value="" className="bg-[#1e1e1e] text-gray-400">동 전체 보기</option>
-                  {currentDongs.map((dong, idx) => (
-                    <option key={idx} value={dong} className="bg-[#1e1e1e] text-white">
-                      {dong}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <button 
-                onClick={handleSearch}
-                className="w-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black py-4 rounded-2xl text-sm transition-all shadow-[0_0_25px_rgba(245,158,11,0.4)] mt-3 cursor-pointer transform active:scale-[0.98]"
-              >
-                🚀 해당 지역 화면으로 이동하기
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* 이용 방법 4단계 */}
-        <section className="bg-[#0d0d0f] border border-amber-500/30 p-6 md:p-8 rounded-3xl space-y-6">
+        {/* 힐핏 이용 안내 4단계 */}
+        <section className="bg-[#0f0f13] border border-amber-500/30 p-6 md:p-8 rounded-3xl space-y-6">
           <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest">HOW TO USE</span>
-            <h3 className="text-xl font-black text-white mt-1">건마사랑 이용 방법</h3>
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">SERVICE PROCESS</span>
+            <h3 className="text-xl font-black text-white mt-1">힐핏 간편 이용 안내</h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 1</span>
-              <h4 className="font-bold text-white mt-1">문의 준비</h4>
-              <p className="text-xs text-gray-400 mt-1">희망하시는 지역명을 알려줍니다.</p>
+              <h4 className="font-bold text-white mt-1">지역 확인</h4>
+              <p className="text-xs text-gray-400 mt-1">이용을 원하시는 세부 지역을 선택합니다.</p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 2</span>
-              <h4 className="font-bold text-white mt-1">가능 여부</h4>
-              <p className="text-xs text-gray-400 mt-1">원하시는 시간대를 확인합니다.</p>
+              <h4 className="font-bold text-white mt-1">프로그램 비교</h4>
+              <p className="text-xs text-gray-400 mt-1">타이, 아로마, 스웨디시 코스를 비교합니다.</p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 3</span>
-              <h4 className="font-bold text-white mt-1">코스 확인</h4>
-              <p className="text-xs text-gray-400 mt-1">이용 조건과 코스를 선택합니다.</p>
+              <h4 className="font-bold text-white mt-1">맞춤 예약</h4>
+              <p className="text-xs text-gray-400 mt-1">제휴점과 편안한 시간대를 조율합니다.</p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 4</span>
-              <h4 className="font-bold text-white mt-1">방문 완료</h4>
-              <p className="text-xs text-gray-400 mt-1">도착 후 후불제로 케어를 받습니다.</p>
+              <h4 className="font-bold text-white mt-1">힐링 케어</h4>
+              <p className="text-xs text-gray-400 mt-1">안심 후불제로 피로를 완벽하게 해소합니다.</p>
             </div>
           </div>
         </section>
@@ -407,66 +376,64 @@ export default function MainClientUI() {
         {/* 고객 실제 후기 */}
         <section className="space-y-4">
           <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">REAL REVIEWS</span>
-            <h3 className="text-xl font-black text-white mt-1">실제 이용 고객 후기</h3>
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">CUSTOMER REVIEWS</span>
+            <h3 className="text-xl font-black text-white mt-1">실제 이용 고객 솔직 후기</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-[#0f0f12] p-5 rounded-2xl border border-white/5 space-y-2">
+            <div className="bg-[#121216] p-5 rounded-2xl border border-white/5 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-amber-400 font-black text-sm">★★★★★ 5.0</span>
                 <span className="text-[11px] text-gray-500">서울 직장인</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
-                &quot;시간 약속 칼같이 맞춰오시고 친절하셨어요. 뭉친 어깨가 싹 풀려서 주말마다 자주 찾게 되네요!&quot;
+                &quot;시간 약속도 정확하시고 테라피스트 분 실력이 너무 좋으셨어요. 뭉친 어깨와 피로가 싹 풀려서 주기적으로 이용 중입니다!&quot;
               </p>
             </div>
-            <div className="bg-[#0f0f12] p-5 rounded-2xl border border-white/5 space-y-2">
+            <div className="bg-[#121216] p-5 rounded-2xl border border-white/5 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-amber-400 font-black text-sm">★★★★★ 5.0</span>
                 <span className="text-[11px] text-gray-500">경기 이용자</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
-                &quot;선입금 없는 후불제라 정말 부담없이 이용할 수 있어서 만족합니다. 매니저분 마인드도 훌륭했어요.&quot;
+                &quot;선입금 없는 안심 후불제라 믿고 이용할 수 있어서 좋았습니다. 위생 상태도 깔끔하고 아주 만족스러웠습니다.&quot;
               </p>
             </div>
           </div>
         </section>
 
-        {/* Q&A */}
+        {/* 자주 묻는 질문 (FAQ) */}
         <section className="space-y-4">
           <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">FAQ & QUESTIONS</span>
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">FAQ & GUIDE</span>
             <h3 className="text-xl font-black text-white mt-1">자주 묻는 질문</h3>
           </div>
           <div className="space-y-3">
             <FaqItem 
-              question="방문까지 보통 시간이 얼마나 소요되나요?"
-              answer="서울, 경기, 인천 주요 지역 기준 평균 20분~30분 내외로 신속하게 방문 서비스가 가능합니다."
+              question="예약 및 방문까지 소요 시간은 어떻게 되나요?"
+              answer="서울, 경기, 인천 주요 지역 기준 평균 20분~30분 내외로 원활한 매칭 및 이용 안내가 가능합니다."
             />
             <FaqItem 
               question="선입금이나 예약금이 발생하나요?"
-              answer="건마사랑 제휴업체는 100% 후불제로 운영되므로 도착 전 선입금을 절대 요구하지 않습니다."
+              answer="힐핏에 입점된 모든 제휴업체는 100% 안심 후불제로 운영되므로 도착 전 어떠한 선입금도 요구하지 않습니다."
             />
           </div>
         </section>
 
       </main>
 
-      {/* 푸터 영역 */}
-      <footer className="bg-[#030303] border-t border-white/10 py-10 text-center text-gray-500 text-xs mt-auto">
+      {/* 푸터 */}
+      <footer className="bg-[#040405] border-t border-white/10 py-10 text-center text-gray-500 text-xs mt-auto">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
-          
           <div>
             <a 
               href="tel:0507-1280-3344" 
               className="inline-flex items-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-amber-400 font-bold px-4 py-2 rounded-xl border border-amber-500/30 hover:border-amber-400 transition-all text-xs shadow-md"
             >
-              <span>🤝</span> 제휴문의 (0507-1280-3344)
+              <span>🤝</span> 힐핏 입점 및 제휴문의 (0507-1280-3344)
             </a>
           </div>
-
-          <p className="text-gray-400 font-bold">건마사랑은 건전하고 안전한 제휴 마사지 정보 플랫폼입니다.</p>
-          <p className="text-[11px] text-gray-600">COPYRIGHT &copy; 건마사랑 ALL RIGHTS RESERVED.</p>
+          <p className="text-gray-400 font-bold">힐핏(HealFit)은 건전하고 안전한 프리미엄 테라피 & 바디케어 정보 플랫폼입니다.</p>
+          <p className="text-[11px] text-gray-600">COPYRIGHT &copy; HealFit ALL RIGHTS RESERVED.</p>
         </div>
       </footer>
     </div>

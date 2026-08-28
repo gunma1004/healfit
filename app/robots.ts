@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  // 🌐 변경할 새 도메인 주소로 수정
-  const baseUrl = 'https://gunmasarang-massage4.vercel.app';
+  const baseUrl = 'https://healfitmassage.netlify.app';
 
   return {
     rules: {

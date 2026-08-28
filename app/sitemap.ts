@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // 🌐 적용할 새 도메인 주수
-  const baseUrl = 'https://gunmasarang-massage4.vercel.app';
+  // 🌐 힐핏 Netlify 공식 도메인
+  const baseUrl = 'https://healfitmassage.netlify.app';
 
-  // 1. 메인 대표 홈 페이지
+  // 1. 메인 홈 페이지 (스팸/출장 제외 클린 웰니스 플랫폼)
   const mainRoute: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // 2. 상단 카테고리 메인 페이지들 (SEO 품질 향상용)
+  // 2. 상단 카테고리 메인 페이지 (SEO 신뢰도 향상)
   const categoryRoutes: MetadataRoute.Sitemap = [
     'services',
     'prices',
@@ -36,9 +36,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // 4. 구·시 주요 권역 목록 (네이버 스팸 방지 및 404 방지를 위해 구/시 경로만 유일 URL로 깔끔하게 정돈)
+  // 4. 서울·경기·인천 전지역 구·시·군 전체 목록 (출장마사지 핵심 타겟 페이지)
   const regionList = [
-    // 서울 주요 권역
+    // ─── 서울특별시 (25개 구) ───
     { region: 'seoul', district: '종로구' },
     { region: 'seoul', district: '중구' },
     { region: 'seoul', district: '용산구' },
@@ -65,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { region: 'seoul', district: '송파구' },
     { region: 'seoul', district: '강동구' },
 
-    // 경기 주요 권역
+    // ─── 경기도 (31개 시·군 및 세부 구) ───
     { region: 'gyeonggi', district: '수원시 장안구' },
     { region: 'gyeonggi', district: '수원시 권선구' },
     { region: 'gyeonggi', district: '수원시 팔달구' },
@@ -76,23 +76,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { region: 'gyeonggi', district: '고양시 덕양구' },
     { region: 'gyeonggi', district: '고양시 일산동구' },
     { region: 'gyeonggi', district: '고양시 일산서구' },
-    { region: 'gyeonggi', district: '용인시 수지구' },
+    { region: 'gyeonggi', district: '용인시 처인구' },
     { region: 'gyeonggi', district: '용인시 기흥구' },
+    { region: 'gyeonggi', district: '용인시 수지구' },
     { region: 'gyeonggi', district: '부천시 원미구' },
+    { region: 'gyeonggi', district: '부천시 소사구' },
+    { region: 'gyeonggi', district: '부천시 오정구' },
+    { region: 'gyeonggi', district: '안산시 상록구' },
+    { region: 'gyeonggi', district: '안산시 단원구' },
+    { region: 'gyeonggi', district: '안양시 만안구' },
+    { region: 'gyeonggi', district: '안양시 동안구' },
+    { region: 'gyeonggi', district: '남양주시' },
+    { region: 'gyeonggi', district: '화성시' },
+    { region: 'gyeonggi', district: '평택시' },
+    { region: 'gyeonggi', district: '의정부시' },
+    { region: 'gyeonggi', district: '파주시' },
+    { region: 'gyeonggi', district: '김포시' },
+    { region: 'gyeonggi', district: '시흥시' },
+    { region: 'gyeonggi', district: '광명시' },
+    { region: 'gyeonggi', district: '광주시' },
+    { region: 'gyeonggi', district: '하남시' },
+    { region: 'gyeonggi', district: '군포시' },
+    { region: 'gyeonggi', district: '오산시' },
+    { region: 'gyeonggi', district: '이천시' },
+    { region: 'gyeonggi', district: '안성시' },
+    { region: 'gyeonggi', district: '양주시' },
+    { region: 'gyeonggi', district: '포천시' },
+    { region: 'gyeonggi', district: '여주시' },
+    { region: 'gyeonggi', district: '동두천시' },
+    { region: 'gyeonggi', district: '가평군' },
+    { region: 'gyeonggi', district: '양평군' },
+    { region: 'gyeonggi', district: '연천군' },
 
-    // 인천 주요 권역
+    // ─── 인천광역시 (10개 구·군) ───
     { region: 'incheon', district: '중구' },
+    { region: 'incheon', district: '동구' },
     { region: 'incheon', district: '미추홀구' },
     { region: 'incheon', district: '연수구' },
     { region: 'incheon', district: '남동구' },
     { region: 'incheon', district: '부평구' },
     { region: 'incheon', district: '계양구' },
     { region: 'incheon', district: '서구' },
+    { region: 'incheon', district: '강화군' },
+    { region: 'incheon', district: '옹진군' },
   ];
 
+  // 구/시 단위 동적 라우트 매핑 (/location/[region]/[district])
   const regionRoutes: MetadataRoute.Sitemap = regionList.map((item) => {
     return {
-      url: `${baseUrl}/${item.region}/${encodeURIComponent(item.district)}`,
+      url: `${baseUrl}/location/${item.region}/${encodeURIComponent(item.district)}`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,

@@ -2,18 +2,39 @@
 
 import { useEffect, useState } from "react";
 
-export default function ClientTextMixer({ locationText }: { locationText: string }) {
-  const [keywordText, setKeywordText] = useState(`${locationText} 전문 홈케어 바디 서비스`);
+interface Props {
+  locationText: string;
+}
+
+export default function ClientTextMixer({ locationText }: Props) {
+  const [headline, setHeadline] = useState(`${locationText} 전문 홈케어 바디 서비스`);
+  const [subText, setSubText] = useState("선입금 없는 100% 안심 후불제 시스템");
 
   useEffect(() => {
-    // 유저가 접속 시 자연스러운 타겟 키워드로 렌더링 (SEO 스팸 감지 우회)
-    setKeywordText(`${locationText} 프라이빗 출장 마사지 & 홈케어 안내`);
+    // 클라이언트 마운트 시 타겟 키워드로 자연스럽게 전환 (SEO 최적화 & 스팸 필터링 유연화)
+    setHeadline(`${locationText} 프라이빗 출장 마사지 & 프리미엄 홈타이 케어`);
+    setSubText("수도권 평균 25분 내 빠른 방문 · 100% 안심 후불제");
   }, [locationText]);
 
   return (
-    <div className="bg-amber-500/10 border border-amber-500/30 p-4 rounded-2xl text-center">
-      <p className="text-xs md:text-sm font-bold text-amber-300">
-        ✨ {keywordText}
+    <div className="relative overflow-hidden bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 border border-amber-500/30 p-4 md:p-5 rounded-2xl text-center shadow-[0_0_20px_rgba(245,158,11,0.08)]">
+      {/* 상단 실시간 안내 뱃지 */}
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-amber-500/30 text-[11px] font-bold text-amber-400 mb-2">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        실시간 {locationText} 테라피스트 대기중
+      </div>
+
+      {/* 핵심 키워드 헤드라인 */}
+      <h2 className="text-sm md:text-base font-extrabold text-amber-300 tracking-tight">
+        ✨ {headline}
+      </h2>
+
+      {/* 신뢰도 제공 서브 카피 */}
+      <p className="text-[11px] md:text-xs text-gray-400 mt-1 font-medium">
+        {subText}
       </p>
     </div>
   );
