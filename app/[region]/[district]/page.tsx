@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ClientTextMixer from "../../ClientTextMixer";
+import { ClientTextMixerInline } from "./ClientTextMixerInline";
 
 interface PageProps {
   params: Promise<{
@@ -273,8 +273,8 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
           </div>
         </section>
 
-        {/* 클라이언트 사이드 키워드 믹서 영역 */}
-        <ClientTextMixer locationText={fullTitle} />
+        {/* 클라이언트 사이드 키워드 믹서 영역 (인라인 렌더링) */}
+        <ClientTextMixerInline locationText={fullTitle} />
 
         {/* 제휴업체 5개 카드리스트 */}
         <section className="space-y-6">

@@ -1,0 +1,33 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+export function ClientTextMixerInline({ locationText }: { locationText: string }) {
+  const [headline, setHeadline] = useState(`${locationText} 전문 홈케어 바디 서비스`);
+  const [subText, setSubText] = useState("선입금 없는 100% 안심 후불제 시스템");
+
+  useEffect(() => {
+    setHeadline(`${locationText} 프라이빗 출장 마사지 & 프리미엄 홈타이 케어`);
+    setSubText("수도권 평균 25분 내 빠른 방문 · 100% 안심 후불제");
+  }, [locationText]);
+
+  return (
+    <div className="relative overflow-hidden bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 border border-amber-500/30 p-4 md:p-5 rounded-2xl text-center shadow-[0_0_20px_rgba(245,158,11,0.08)]">
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-amber-500/30 text-[11px] font-bold text-amber-400 mb-2">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        실시간 {locationText} 테라피스트 대기중
+      </div>
+
+      <h2 className="text-sm md:text-base font-extrabold text-amber-300 tracking-tight">
+        ✨ {headline}
+      </h2>
+
+      <p className="text-[11px] md:text-xs text-gray-400 mt-1 font-medium">
+        {subText}
+      </p>
+    </div>
+  );
+}
