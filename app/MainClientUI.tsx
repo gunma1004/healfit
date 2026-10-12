@@ -203,13 +203,13 @@ export default function MainClientUI() {
       
       <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-12">
         
-        {/* 1. 상단 히어로 메인 배너 */}
+        {/* 1. 상단 히어로 메인 배너 (H1 키워드 최적화) */}
         <section className="text-center my-2">
           <div className="overflow-hidden rounded-3xl border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.15)] relative h-64 md:h-84 flex items-center justify-center p-6 bg-gradient-to-b from-neutral-900 to-[#08080a]">
             <div className="absolute inset-0 z-0">
               <img 
                 src="/banner.jpg" 
-                alt="힐핏 프리미엄 스파 테라피 배너" 
+                alt="힐핏 서울 경기 인천 출장마사지 홈케어 배너" 
                 className="w-full h-full object-cover filter brightness-[0.35] scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#08080a] via-black/40 to-transparent"></div>
@@ -217,24 +217,24 @@ export default function MainClientUI() {
             
             <div className="relative z-10 space-y-3">
               <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-black font-black text-xs tracking-wider shadow-lg">
-                ✨ 수도권 검증된 힐링 & 테라피 제휴 네트워크
+                ✨ 서울·경기·인천 24시간 출장마사지 & 홈타이 공식 안내
               </span>
-              <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight drop-shadow-lg">
-                서울·경기·인천 <span className="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">프리미엄 힐링 바디케어</span>
+              <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight drop-shadow-lg">
+                수도권 전지역 <span className="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">출장마사지 & 홈케어 이용정보</span>
               </h1>
               <p className="text-gray-200 text-xs md:text-sm font-medium max-w-lg mx-auto drop-shadow leading-relaxed">
-                엄선된 전문 테라피스트의 프라이빗 피로회복 & 웰니스 프로그램! 지금 바로 내 주변 맞춤 케어를 만나보세요.
+                엄선된 전문 테라피스트의 1:1 방문 맞춤 케어! 자택 및 숙소 어디서나 30분 내 신속 방문, 선입금 없는 100% 안심 후불제.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 2. 🔥 프리미엄 추천 제휴 파트너 (BEST 5) - 최상단 우선 노출로 CTR 극대화 */}
+        {/* 2. 🔥 프리미엄 추천 제휴 파트너 (BEST 5) */}
         <section className="space-y-6">
           <div className="text-center mb-6">
             <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">BEST PARTNER SHOPS</p>
             <h2 className="text-xl md:text-2xl font-black text-white mt-1">
-              🏆 힐핏 추천 프리미엄 제휴점 (BEST 5)
+              🏆 힐핏 추천 제휴 샵 (BEST 5)
             </h2>
           </div>
 
@@ -271,7 +271,7 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 3. 📍 내 동네/세부 구·동 검색 박스 (업체 카드 다음 순서로 배치) */}
+        {/* 3. 📍 내 동네 상세 지역 테라피 찾기 */}
         <section className="pt-4">
           <div className="bg-gradient-to-b from-[#141418] to-[#0d0d10] border-2 border-amber-500/40 p-6 md:p-8 rounded-3xl max-w-xl mx-auto shadow-[0_10px_35px_rgba(0,0,0,0.8)] text-left relative overflow-hidden">
             <div className="flex items-center justify-between mb-5">
@@ -336,13 +336,46 @@ export default function MainClientUI() {
                 onClick={handleSearch}
                 className="w-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black py-4 rounded-2xl text-sm transition-all shadow-[0_0_25px_rgba(245,158,11,0.4)] mt-4 cursor-pointer transform active:scale-[0.98]"
               >
-                🔍 선택 지역 테라피 안내 보기
+                🔍 선택 지역 출장마사지 안내 보기
               </button>
             </div>
           </div>
         </section>
 
-        {/* 4. 힐핏 이용 안내 4단계 */}
+        {/* 🌟 4. [SEO 핵심] 네이버 검색 로봇 크롤링용 정적 링크 섹션 (새로 추가) */}
+        <section className="bg-[#0f0f13] border border-white/5 p-6 md:p-8 rounded-3xl space-y-6">
+          <div className="text-center">
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">REGIONAL DIRECTORY</span>
+            <h3 className="text-xl font-black text-white mt-1">지역별 출장마사지 빠른 안내</h3>
+            <p className="text-xs text-gray-400 mt-1">원하시는 지역을 클릭하시면 상세 제휴 정보와 맞춤 코스를 바로 확인하실 수 있습니다.</p>
+          </div>
+
+          <div className="space-y-4">
+            {Object.keys(regionData).map((rKey) => (
+              <div key={rKey} className="bg-black/40 p-4 rounded-2xl border border-white/5">
+                <h4 className="text-amber-400 font-extrabold text-sm mb-3 flex items-center gap-1.5">
+                  <span>📍</span> {regionData[rKey].name} 주요 출장마사지 지역
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {Object.keys(regionData[rKey].districts).map((dKey) => {
+                    const distName = regionData[rKey].districts[dKey].name;
+                    return (
+                      <Link 
+                        key={dKey} 
+                        href={`/${rKey}/${encodeURIComponent(distName)}`}
+                        className="bg-[#18181c] hover:bg-amber-500 hover:text-black text-gray-300 px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/5 transition-all"
+                      >
+                        {distName}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 5. 힐핏 이용 안내 4단계 */}
         <section className="bg-[#0f0f13] border border-amber-500/30 p-6 md:p-8 rounded-3xl space-y-6">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">SERVICE PROCESS</span>
@@ -372,7 +405,7 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 5. 고객 실제 후기 */}
+        {/* 6. 고객 실제 후기 */}
         <section className="space-y-4">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">CUSTOMER REVIEWS</span>
@@ -400,7 +433,7 @@ export default function MainClientUI() {
           </div>
         </section>
 
-        {/* 6. 자주 묻는 질문 (FAQ) */}
+        {/* 7. 자주 묻는 질문 (FAQ) */}
         <section className="space-y-4">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">FAQ & GUIDE</span>

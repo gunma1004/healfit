@@ -2,24 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "코스별 가격 안내 | 투명한 100% 후불 정찰제 - 힐핏(HealFit)",
-  // 네이버 검색 최적 글자 수 (공백 포함 75~80자) 및 안심 예약 CTR 문구
-  description: "서울·경기·인천 힐핏 투명한 코스별 가격 안내! 타이, 아로마, 스웨디시, VIP 맞춤 케어 비용과 100% 안심 후불제 예약 시스템을 확인하세요.",
+  // 🌟 핵심 키워드(출장 이용정보 마사지) 적용
+  title: "출장 이용정보 마사지 코스별 가격 안내 | 힐핏(HealFit)",
+  // 🌟 타이틀과 중복 방지: 시·도 출장마사지 기반 안내 분리
+  description:
+    "서울 경기 인천 출장마사지 코스별 가격 및 투명한 요금 안내. 타이 건식 6만원부터, 아로마, 스웨디시, VIP 맞춤 케어 비용과 100% 안심 후불제 정찰 시스템을 확인하세요.",
   keywords: [
-    "마사지 가격",
+    "출장마사지 가격",
+    "출장 이용정보 마사지",
     "홈케어 가격",
     "타이마사지 비용",
     "아로마 테라피 요금",
     "스웨디시 가격",
-    "후불제 바디케어",
-    "힐핏 가격안내"
+    "후불제 출장마사지",
+    "힐핏 가격안내",
+    "힐핏",
+    "HealFit"
   ],
   alternates: {
     canonical: "https://healfitmassage.netlify.app/prices",
   },
   openGraph: {
-    title: "코스별 가격 안내 | 힐핏(HealFit) 투명한 후불 정찰제",
-    description: "선입금 없는 100% 안심 후불제! 타이, 아로마, 스웨디시 맞춤 코스별 요금을 투명하게 비교해 보세요.",
+    title: "출장 이용정보 마사지 코스별 가격 안내 | 힐핏(HealFit)",
+    description:
+      "선입금 없는 100% 안심 후불제! 서울 경기 인천 출장마사지 코스별 정찰 요금을 투명하게 비교해 보세요.",
     url: "https://healfitmassage.netlify.app/prices",
     siteName: "힐핏(HealFit)",
     locale: "ko_KR",
@@ -81,7 +87,7 @@ export default function PricesPage() {
             TRANSPARENT PRICE POLICY
           </span>
           <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
-            힐핏 투명한 코스별 가격 안내
+            출장마사지 코스별 이용 가격 안내
           </h1>
           <p className="text-xs md:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
             100% 후불제 안심 예약 시스템으로 운영되며, 방문 전 일체의 선입금이나 예약금을 요구하지 않습니다.
@@ -165,18 +171,28 @@ export default function PricesPage() {
         {/* 빠른 상담 및 예약 연결 */}
         <section className="text-center pt-2 space-y-4">
           <a 
-            href="tel:0507-1280-3344"
+            href="tel:0507-1280-3344" 
             className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-sm px-8 py-3.5 rounded-2xl shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all transform active:scale-95"
           >
             📞 실시간 코스 및 비용 상담하기
           </a>
 
-          <div>
-            <Link 
-              href="/"
-              className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-amber-400 transition-colors"
-            >
-              ← 힐핏 메인 홈으로 이동하기
+          {/* 크롤러 및 사용자용 내부 네비게이션 링크 */}
+          <div className="flex justify-center items-center gap-4 text-xs font-semibold text-gray-400 pt-3">
+            <Link href="/" className="hover:text-amber-400 transition-colors">
+              🏠 메인 홈
+            </Link>
+            <span>•</span>
+            <Link href="/services" className="hover:text-amber-400 transition-colors">
+              📋 이용안내
+            </Link>
+            <span>•</span>
+            <Link href="/reviews" className="hover:text-amber-400 transition-colors">
+              ⭐ 생생후기
+            </Link>
+            <span>•</span>
+            <Link href="/travel" className="hover:text-amber-400 transition-colors">
+              🚗 지역 힐링스팟
             </Link>
           </div>
         </section>

@@ -9,6 +9,7 @@ interface PageProps {
 
 const shopData: Record<string, {
   name: string;
+  cleanName: string;
   phone: string;
   location: string;
   badge: string;
@@ -22,11 +23,10 @@ const shopData: Record<string, {
   }[];
   features: string[];
 }> = {
-  // ───────────────────────────────────────────
-  // 1. 한국골든테라피 (0507-1280-3361)
-  // ───────────────────────────────────────────
+  // 1. 한국골든테라피
   "1": {
     name: "✨ 한국골든테라피",
+    cleanName: "한국골든테라피",
     phone: "0507-1280-3361",
     location: "서울 · 경기 · 인천 전지역 25분 내 신속 방문",
     badge: "VIP 골든 힐링 케어",
@@ -55,11 +55,10 @@ const shopData: Record<string, {
     features: ["100% 안심 후불제", "수도권 25분 내 도착", "24시간 상시 운영", "위생 및 방역 철저"]
   },
 
-  // ───────────────────────────────────────────
-  // 2. 한국미인테라피 (0507-1280-3303)
-  // ───────────────────────────────────────────
+  // 2. 한국미인테라피
   "2": {
     name: "🌸 한국미인테라피",
+    cleanName: "한국미인테라피",
     phone: "0507-1280-3303",
     location: "서울 · 경기 · 인천 전지역 신속 방문",
     badge: "재방문율 최우수",
@@ -97,11 +96,10 @@ const shopData: Record<string, {
     features: ["선입금 ZERO 100% 후불제", "전문 힐러 상시 대기", "철저한 프라이빗 보장", "맞춤형 코스 안내"]
   },
 
-  // ───────────────────────────────────────────
-  // 3. 주주테라피 (0507-1280-3193)
-  // ───────────────────────────────────────────
+  // 3. 주주테라피
   "3": {
     name: "💎 주주테라피",
+    cleanName: "주주테라피",
     phone: "0507-1280-3193",
     location: "서울 · 경기 · 인천 전지역 신속 도착",
     badge: "만족도 1위 추천",
@@ -161,11 +159,10 @@ const shopData: Record<string, {
     features: ["선입금 없는 100% 후불제", "평균 25분 빠른 방문", "24시간 상담 가능", "최고급 오일 사용"]
   },
 
-  // ───────────────────────────────────────────
-  // 4. 퀸즈홈테라피 (0507-1280-3334)
-  // ───────────────────────────────────────────
+  // 4. 퀸즈홈테라피
   "4": {
     name: "👑 퀸즈홈테라피",
+    cleanName: "퀸즈홈테라피",
     phone: "0507-1280-3334",
     location: "서울 · 경기 · 인천 전지역 방문",
     badge: "여왕처럼 누리는 VIP",
@@ -223,11 +220,10 @@ const shopData: Record<string, {
     features: ["100% 후불 안심결제", "2030 한국인 관리사", "수도권 전지역 방문", "24시간 예약 가능"]
   },
 
-  // ───────────────────────────────────────────
-  // 5. 오늘밤테라피 (0507-1280-3223)
-  // ───────────────────────────────────────────
+  // 5. 오늘밤테라피
   "5": {
     name: "🌙 오늘밤테라피",
+    cleanName: "오늘밤테라피",
     phone: "0507-1280-3223",
     location: "서울 · 경기 · 인천 전지역 실시간 방문",
     badge: "야간 힐링 만족 1위",
@@ -283,14 +279,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const shop = shopData[resolvedParams.id] || shopData["1"];
 
   return {
-    title: `${shop.name} 코스 및 가격 안내 | 힐핏(HealFit) 24시 제휴`,
-    description: `${shop.name} 24시 안심 방문 테라피! 선입금 없는 100% 후불제, 코스별 가격비교 및 신속 예약 정보를 힐핏에서 확인하세요.`,
+    // 🌟 요청 규격 반영: 출장 케어 마사지 키워드 적용
+    title: `${shop.cleanName} 출장 케어 마사지 코스 및 가격 안내 | 힐핏(HealFit)`,
+    // 🌟 타이틀과 중복 방지: 시·도 출장마사지 키워드 중심 설명 분리
+    description: `서울 경기 인천 출장마사지 제휴점 ${shop.cleanName}의 정규 코스 및 정찰 가격 안내. 100% 안심 후불제로 30분 내 신속 방문 케어를 받아보세요.`,
     alternates: {
       canonical: `https://healfitmassage.netlify.app/shop/${resolvedParams.id}`,
     },
     openGraph: {
-      title: `${shop.name} | 힐핏(HealFit) 프리미엄 제휴점`,
-      description: `${shop.name} 코스 및 가격 정보 안내. 100% 안심 후불제로 편안하게 이용해 보세요.`,
+      title: `${shop.cleanName} 출장 케어 마사지 코스 및 가격 안내 | 힐핏(HealFit)`,
+      description: `서울 경기 인천 출장마사지 제휴점 ${shop.cleanName}의 100% 안심 후불제 코스 정보 안내.`,
       url: `https://healfitmassage.netlify.app/shop/${resolvedParams.id}`,
       siteName: "힐핏(HealFit)",
       locale: "ko_KR",
@@ -305,10 +303,11 @@ export default async function ShopDetailPage({ params }: PageProps) {
   const shopId = resolvedParams.id;
   const shop = shopData[shopId] || shopData["1"];
 
+  // 🌟 문법 오류 보정 완료된 스키마 JSON-LD
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
-    "name": `${shop.name} - 힐핏`,
+    "name": `${shop.cleanName} (힐핏 제휴점)`,
     "description": shop.desc,
     "telephone": shop.phone,
     "url": `https://healfitmassage.netlify.app/shop/${shopId}`,
@@ -318,7 +317,7 @@ export default async function ShopDetailPage({ params }: PageProps) {
       "addressRegion": "수도권(서울, 경기, 인천)",
       "addressCountry": "KR"
     },
-    "priceRange": "$$"
+    "priceRange": "60,000원~"
   };
 
   return (
@@ -445,8 +444,8 @@ export default async function ShopDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* 안내사항 */}
-        <section className="bg-black/80 p-5 rounded-2xl border border-white/10">
+        {/* 안내사항 및 크롤러 링크 */}
+        <section className="bg-black/80 p-5 rounded-2xl border border-white/10 space-y-4">
           <h3 className="text-amber-400 font-bold text-sm mb-2 flex items-center gap-1.5">
             <span>📌</span> 이용 예약 안내
           </h3>
@@ -454,6 +453,15 @@ export default async function ShopDetailPage({ params }: PageProps) {
             <li>힐핏 입점 제휴업체는 <strong>100% 후불제</strong>로 운영됩니다. 출발 전 선입금을 절대 요구하지 않습니다.</li>
             <li>희망하시는 시간 20~30분 전에 미리 예약 문의 주시면 보다 원활한 서비스 매칭이 가능합니다.</li>
           </ul>
+
+          <div className="pt-3 border-t border-white/5 flex flex-wrap gap-4 text-xs font-semibold text-gray-400">
+            <Link href="/services" className="hover:text-amber-400 transition-colors">
+              📋 전체 이용안내 보기
+            </Link>
+            <Link href="/prices" className="hover:text-amber-400 transition-colors">
+              💳 표준 코스&가격 비교
+            </Link>
+          </div>
         </section>
 
       </main>
@@ -468,7 +476,7 @@ export default async function ShopDetailPage({ params }: PageProps) {
             <span className="text-lg">📞</span> 전화로 즉시예약
           </a>
           <a 
-            href={`sms:${shop.phone}?body=${encodeURIComponent(`${shop.name} 예약 문의드립니다. (힐핏 보고 연락드렸습니다)`)}`}
+            href={`sms:${shop.phone}?body=${encodeURIComponent(`${shop.cleanName} 예약 문의드립니다. (힐핏 보고 연락드렸습니다)`)}`}
             className="flex items-center justify-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white font-black py-3.5 rounded-2xl text-xs md:text-sm border border-white/10 hover:border-amber-500/40 transition-transform active:scale-95"
           >
             <span className="text-lg">💬</span> 간편 문자상담

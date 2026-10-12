@@ -2,25 +2,31 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "실제 고객 생생후기 | 만족도 5.0 안심 이용 리뷰 - 힐핏(HealFit)",
-  // 네이버 검색 최적 글자 수 (공백 포함 75~80자) 및 안심 신뢰 CTR 문구
-  description: "서울·경기·인천 힐핏 실제 이용 고객 100% 솔직 후기 모음! 신속 방문 만족도, 관리사 실력, 선입금 없는 후불제 안심 리뷰를 확인해 보세요.",
+  // 🌟 핵심 키워드(출장 케어 마사지) 적용
+  title: "출장 케어 마사지 코스 및 프로그램 이용안내 | 힐핏(HealFit)",
+  // 🌟 타이틀과 중복 방지: 시·도 출장마사지 기반 안내 분리
+  description:
+    "서울 경기 인천 출장마사지 서비스 프로그램 상세 안내. 타이 건식, 천연 아로마, 감성 스웨디시, 1:1 VIP 맞춤 코스와 선입금 없는 100% 안심 후불제 시스템을 확인하세요.",
   keywords: [
-    "힐핏 후기",
-    "마사지 이용후기",
-    "홈케어 솔직리뷰",
-    "출장마사지 후기",
-    "스웨디시 후기",
-    "서울 방문케어 후기",
-    "경기 마사지 리뷰"
+    "출장마사지",
+    "출장 케어 마사지",
+    "타이마사지 코스",
+    "아로마테라피 프로그램",
+    "스웨디시 마사지",
+    "방문 홈케어 서비스",
+    "바디케어 추천",
+    "1대1 맞춤 테라피",
+    "힐핏",
+    "HealFit"
   ],
   alternates: {
-    canonical: "https://healfitmassage.netlify.app/reviews",
+    canonical: "https://healfitmassage.netlify.app/services",
   },
   openGraph: {
-    title: "실제 고객 생생후기 | 힐핏(HealFit) 검증된 100% 솔직 리뷰",
-    description: "선입금 없는 안심 후불제와 빠른 방문! 서울·경기·인천 고객님들이 직접 작성한 생생한 피로회복 후기를 만나보세요.",
-    url: "https://healfitmassage.netlify.app/reviews",
+    title: "출장 케어 마사지 코스 및 프로그램 이용안내 | 힐핏(HealFit)",
+    description:
+      "서울 경기 인천 출장마사지 맞춤 힐링 프로그램 안내! 타이, 아로마, 스웨디시 프리미엄 1:1 바디케어를 100% 후불제로 만나보세요.",
+    url: "https://healfitmassage.netlify.app/services",
     siteName: "힐핏(HealFit)",
     locale: "ko_KR",
     type: "website",
@@ -29,159 +35,164 @@ export const metadata: Metadata = {
         url: "/og-main.png",
         width: 1200,
         height: 630,
-        alt: "힐핏 실제 고객 생생후기",
+        alt: "힐핏 서비스 안내",
       },
     ],
   },
 };
 
-const reviewStats = {
-  average: "4.9",
-  totalReviews: "1,240+",
-  recommendRate: "98.7%",
-};
-
-const reviews = [
+const serviceList = [
   {
-    name: "서울 강남구 직장인",
-    date: "최근 이용",
-    rate: "★★★★★ 5.0",
-    course: "감성 스웨디시 90분",
-    badge: "재이용 고객",
-    text: "야근 후에 방문 홈케어 신청했는데 25분 만에 오셨어요. 어깨와 목에 뭉친 피로가 싹 풀려서 밤에 정말 꿀잠 잤습니다. 다음 주말에도 다시 부를 생각입니다!",
+    num: "01",
+    title: "정통 타이 건식 테라피",
+    sub: "TRADITIONAL THAI CARE",
+    desc: "전신의 뭉친 근육과 스트레스받은 관절을 체계적인 스트레칭과 지압으로 정성스럽게 풀어주는 전통 릴렉싱 코스입니다.",
+    tags: ["전신 피로 회복", "관절 스트레칭", "근육 이완"],
+    recommend: "오랜 좌식 생활로 어깨와 허리가 결리는 직장인",
   },
   {
-    name: "경기 수원시 영통구 고객님",
-    date: "최근 이용",
-    rate: "★★★★★ 5.0",
-    course: "베테랑 VIP 스페셜 120분",
-    badge: "인증 리뷰",
-    text: "선입금 없는 100% 후불제라 정말 마음 편하게 이용했습니다. 테라피스트 분 마인드와 실력이 너무 훌륭하시고 위생도 청결해서 아주 만족스러웠습니다.",
+    num: "02",
+    title: "프리미엄 천연 아로마 케어",
+    sub: "ORGANIC AROMA THERAPY",
+    desc: "엄선된 최고급 천연 유기농 오일을 블렌딩하여 피부 자극 없이 부드럽게 혈액순환과 심신 안정을 돕는 힐링 코스입니다.",
+    tags: ["심신 안정", "피부 보습", "스트레스 완화"],
+    recommend: "부드러운 압과 아로마 향으로 깊은 휴식을 원하는 분",
   },
   {
-    name: "인천 연수구 송도 고객님",
-    date: "최근 이용",
-    rate: "★★★★★ 5.0",
-    course: "프리미엄 천연 아로마 90분",
-    badge: "인증 리뷰",
-    text: "스웨디시와 아로마 오일 조합 코스 이용해봤는데 전신 림프가 제대로 풀리는 느낌이었어요. 집에서 편안하게 받으니 샵까지 이동할 필요가 없어서 최고네요.",
+    num: "03",
+    title: "감성 딥티슈 스웨디시",
+    sub: "LUXURY SWEDISH SPA",
+    desc: "체내 림프 순환을 원활하게 촉진하고 섬세한 테크닉으로 묵은 노폐물 배출과 신체 밸런스를 리프레시해 드리는 시그니처 코스입니다.",
+    tags: ["림프 순환 촉진", "부종 완화", "VIP 프리미엄"],
+    recommend: "만성 피로 해소와 감성적인 힐링 터치를 선호하는 분",
   },
   {
-    name: "서울 마포구 상암동 고객님",
-    date: "최근 이용",
-    rate: "★★★★★ 5.0",
-    course: "타이 건식 릴렉싱 60분",
-    badge: "신규 고객",
-    text: "운동 후 근육 뭉침이 심해서 급하게 예약했는데 도착 시간도 칼같으셨고 스트레칭 압 조절을 너무 잘해주셔서 뭉친 다리가 완전히 가벼워졌습니다.",
-  },
-  {
-    name: "경기 성남시 분당구 고객님",
-    date: "최근 이용",
-    rate: "★★★★★ 5.0",
-    course: "감성 스웨디시 60분",
-    badge: "재이용 고객",
-    text: "타 플랫폼은 선입금 유도가 많아서 불안했는데, 힐핏은 확실한 후불 정찰제라 믿음이 갑니다. 친절하고 프라이빗한 케어 감사합니다.",
+    num: "04",
+    title: "베테랑 힐러 VIP 스페셜",
+    sub: "SIGNATURE 1:1 CUSTOM CARE",
+    desc: "숙련된 전문 테라피스트가 1:1로 고객님의 체형 및 피로도를 정밀 분석하여 건식과 오일을 결합해 진행하는 맞춤형 집중 코스입니다.",
+    tags: ["1:1 맞춤 집중", "체형 밸런스", "최고 만족도"],
+    recommend: "특별한 날 완벽한 컨디션 회복과 VIP 케어가 필요한 분",
   },
 ];
 
-export default function ReviewsPage() {
+export default function ServicesPage() {
   return (
     <div className="bg-[#08080a] text-gray-100 min-h-screen py-10 px-4 font-sans selection:bg-amber-500 selection:text-black">
-      <div className="max-w-3xl mx-auto space-y-8">
+      <div className="max-w-4xl mx-auto space-y-10">
         
         {/* 상단 타이틀 헤더 */}
         <section className="text-center space-y-3">
           <span className="inline-block px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black tracking-widest uppercase">
-            REAL CUSTOMER REVIEWS
+            PREMIUM CARE SERVICE
           </span>
           <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
-            힐핏 실제 이용 고객 솔직 후기
+            출장 케어 마사지 코스별 이용안내
           </h1>
-          <p className="text-xs md:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
-            서울·경기·인천 전지역에서 힐핏 서비스를 직접 경험하신 고객님들의 100% 솔직한 생생 후기입니다.
+          <p className="text-xs md:text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">
+            고객님의 당일 컨디션과 선호에 맞춰 가장 편안하고 완벽한 피로회복 시간을 선사하는 맞춤 테라피 프로그램입니다.
           </p>
         </section>
 
-        {/* 만족도 통계 요약 카드 */}
-        <section className="bg-gradient-to-r from-amber-500/15 via-amber-500/5 to-amber-500/15 border border-amber-500/30 p-6 rounded-3xl grid grid-cols-3 gap-2 text-center shadow-[0_0_25px_rgba(245,158,11,0.08)]">
+        {/* 서비스 4대 핵심 가치 배너 */}
+        <section className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 border border-amber-500/30 p-6 rounded-3xl grid grid-cols-2 md:grid-cols-4 gap-4 text-center shadow-[0_0_20px_rgba(245,158,11,0.08)]">
           <div className="space-y-1">
-            <span className="text-[11px] text-gray-400 font-semibold block">평균 고객 평점</span>
-            <span className="text-xl md:text-2xl font-black text-amber-300">★ {reviewStats.average}</span>
+            <span className="text-xl">⏱️</span>
+            <h4 className="text-xs font-bold text-white">25분 내 빠른 방문</h4>
+            <p className="text-[10px] text-gray-400">수도권 전지역 신속 배치</p>
           </div>
-          <div className="space-y-1 border-x border-white/10">
-            <span className="text-[11px] text-gray-400 font-semibold block">누적 안심 리뷰</span>
-            <span className="text-xl md:text-2xl font-black text-white">{reviewStats.totalReviews}</span>
+          <div className="space-y-1 border-l border-white/5">
+            <span className="text-xl">🛡️</span>
+            <h4 className="text-xs font-bold text-white">100% 안심 후불제</h4>
+            <p className="text-[10px] text-gray-400">도착 전 선입금 0원</p>
           </div>
-          <div className="space-y-1">
-            <span className="text-[11px] text-gray-400 font-semibold block">지인 추천율</span>
-            <span className="text-xl md:text-2xl font-black text-emerald-400">{reviewStats.recommendRate}</span>
+          <div className="space-y-1 border-l border-white/5">
+            <span className="text-xl">🌿</span>
+            <h4 className="text-xs font-bold text-white">최고급 천연 오일</h4>
+            <p className="text-[10px] text-gray-400">자극 없는 프리미엄 성분</p>
+          </div>
+          <div className="space-y-1 border-l border-white/5">
+            <span className="text-xl">👑</span>
+            <h4 className="text-xs font-bold text-white">검증된 전문 힐러</h4>
+            <p className="text-[10px] text-gray-400">체계적인 교육 이수 매니저</p>
           </div>
         </section>
 
-        {/* 리뷰 카드 리스트 */}
-        <section className="space-y-4">
-          {reviews.map((rev, idx) => (
+        {/* 서비스 카드 그리드 (2x2) */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {serviceList.map((service, idx) => (
             <div 
               key={idx} 
-              className="bg-[#121216] border border-white/5 hover:border-amber-500/30 p-5 md:p-6 rounded-2xl space-y-3 transition-all shadow-md group"
+              className="bg-[#121216] border border-white/5 hover:border-amber-500/40 p-6 rounded-3xl space-y-4 transition-all shadow-md group relative overflow-hidden"
             >
-              <div className="flex justify-between items-start gap-2">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-amber-400 font-black text-sm tracking-wide">
-                      {rev.rate}
-                    </span>
-                    <span className="text-[10px] bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded-md border border-amber-500/20 font-bold">
-                      {rev.badge}
-                    </span>
-                  </div>
-                  <div className="text-xs text-gray-300 font-bold">
-                    {rev.name}
-                  </div>
-                </div>
-
-                <div className="text-right space-y-1">
-                  <span className="text-[11px] text-gray-500 font-medium block">
-                    {rev.date}
-                  </span>
-                  <span className="text-[10px] text-amber-400/80 bg-black/40 px-2 py-0.5 rounded border border-white/5 font-medium">
-                    {rev.course}
-                  </span>
-                </div>
+              <div className="flex justify-between items-start">
+                <span className="text-amber-400 font-black text-2xl tracking-tighter">
+                  {service.num}
+                </span>
+                <span className="text-[10px] text-gray-400 font-semibold tracking-wider bg-black/40 px-2.5 py-1 rounded-md border border-white/5">
+                  {service.sub}
+                </span>
               </div>
 
-              <p className="text-xs md:text-sm text-gray-300 leading-relaxed pt-1 border-t border-white/5">
-                &quot;{rev.text}&quot;
-              </p>
+              <div className="space-y-2">
+                <h3 className="font-extrabold text-lg text-white group-hover:text-amber-400 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+
+              {/* 태그 영역 */}
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {service.tags.map((tag, tagIdx) => (
+                  <span 
+                    key={tagIdx} 
+                    className="text-[11px] bg-amber-500/10 text-amber-300 px-2.5 py-0.5 rounded-lg border border-amber-500/20 font-medium"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* 추천 대상 박스 */}
+              <div className="bg-black/50 p-3 rounded-xl border border-white/5 text-[11px] text-gray-400">
+                <strong className="text-amber-400/90 font-bold">💡 추천 대상:</strong> {service.recommend}
+              </div>
             </div>
           ))}
         </section>
 
-        {/* 안심 예약 보증 배너 */}
-        <section className="bg-[#0f0f13] border border-amber-500/30 p-6 rounded-3xl text-center space-y-3">
-          <h3 className="text-base font-black text-white">
-            🛡️ 100% 안심 후불 예약제 운영
+        {/* 하단 CTA 박스 */}
+        <section className="bg-[#0f0f13] border border-amber-500/30 p-6 md:p-8 rounded-3xl text-center space-y-3">
+          <h3 className="text-base md:text-lg font-black text-white">
+            나에게 맞는 맞춤 코스가 고민되시나요?
           </h3>
           <p className="text-xs text-gray-400 max-w-md mx-auto leading-relaxed">
-            힐핏은 검증된 관리사 방문 후 결제되는 안전 시스템을 고수하고 있어 예약금 사기 걱정이 없습니다.
+            전문 상담원이 현재 고객님의 피로 부위와 컨디션에 가장 최적화된 테라피 프로그램을 친절하게 안내해 드립니다.
           </p>
-          <div>
+          <div className="pt-1">
             <a 
               href="tel:0507-1280-3344"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-xs px-6 py-3 rounded-xl shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all transform active:scale-95"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-xs px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all transform active:scale-95"
             >
-              📞 지금 바로 실시간 힐링 예약하기
+              📞 1:1 맞춤 출장마사지 실시간 상담하기
             </a>
           </div>
         </section>
 
-        {/* 홈으로 돌아가기 버튼 */}
-        <div className="text-center pt-2">
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-amber-400 transition-colors"
-          >
-            ← 힐핏 메인 홈으로 이동하기
+        {/* 크롤러 및 사용자용 내부 네비게이션 링크 */}
+        <div className="flex justify-center items-center gap-4 text-xs font-semibold text-gray-400 pt-2">
+          <Link href="/" className="hover:text-amber-400 transition-colors">
+            🏠 메인 홈
+          </Link>
+          <span>•</span>
+          <Link href="/prices" className="hover:text-amber-400 transition-colors">
+            💳 코스&가격 비교
+          </Link>
+          <span>•</span>
+          <Link href="/travel" className="hover:text-amber-400 transition-colors">
+            🚗 지역 힐링스팟
           </Link>
         </div>
 

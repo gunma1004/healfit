@@ -2,23 +2,31 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "주변 제휴명소 & 맛집·숙소 안내 | 힐핏(HealFit)",
-  description: "서울·경기·인천 힐링 명소와 검증된 맛집, 편안한 휴식 공간 가이드! 힐핏 테라피 케어와 함께 즐기는 수도권 추천 스팟 정보를 확인하세요.",
+  // 🌟 핵심 키워드(출장 이용정보 마사지) 적용
+  title: "출장 이용정보 마사지 코스별 가격 안내 | 힐핏(HealFit)",
+  // 🌟 타이틀과 중복 방지: 시·도 출장마사지 기반 안내 분리
+  description:
+    "서울 경기 인천 출장마사지 코스별 가격 및 투명한 요금 안내. 타이 건식 6만원부터, 아로마, 스웨디시, VIP 맞춤 케어 비용과 100% 안심 후불제 정찰 시스템을 확인하세요.",
   keywords: [
-    "힐핏 제휴명소",
-    "서울 맛집 숙소",
-    "경기 힐링 스팟",
-    "인천 휴식 공간",
-    "테라피 연계 숙소",
-    "웰니스 푸드"
+    "출장마사지 가격",
+    "출장 이용정보 마사지",
+    "홈케어 가격",
+    "타이마사지 비용",
+    "아로마 테라피 요금",
+    "스웨디시 가격",
+    "후불제 출장마사지",
+    "힐핏 가격안내",
+    "힐핏",
+    "HealFit"
   ],
   alternates: {
-    canonical: "https://healfitmassage.netlify.app/places",
+    canonical: "https://healfitmassage.netlify.app/prices",
   },
   openGraph: {
-    title: "주변 제휴명소 & 맛집·숙소 안내 | 힐핏(HealFit)",
-    description: "테라피와 함께 즐기는 서울·경기·인천 핫플레이스! 검증된 맛집과 편안한 휴식처를 한눈에 만나보세요.",
-    url: "https://healfitmassage.netlify.app/places",
+    title: "출장 이용정보 마사지 코스별 가격 안내 | 힐핏(HealFit)",
+    description:
+      "선입금 없는 100% 안심 후불제! 서울 경기 인천 출장마사지 코스별 정찰 요금을 투명하게 비교해 보세요.",
+    url: "https://healfitmassage.netlify.app/prices",
     siteName: "힐핏(HealFit)",
     locale: "ko_KR",
     type: "website",
@@ -27,166 +35,167 @@ export const metadata: Metadata = {
         url: "/og-main.png",
         width: 1200,
         height: 630,
-        alt: "힐핏 주변 제휴명소 안내",
+        alt: "힐핏 코스별 가격 안내",
       },
     ],
   },
 };
 
-const placeCategories = [
+const priceList = [
   {
-    category: "🍵 힐링 티하우스 & 카페",
-    tag: "REST & TEA",
-    items: [
-      {
-        name: "도심 속 오가닉 티 라운지",
-        region: "서울 강남 / 서초",
-        desc: "테라피 전후 심신 안정을 돕는 프리미엄 유기농 허브티 & 블렌딩 티 전문점",
-        badge: "힐핏 제휴 추천",
-      },
-      {
-        name: "포레스트 뷰 릴렉스 카페",
-        region: "경기 성남 / 분당",
-        desc: "자연 채광과 숲 뷰를 즐기며 조용하게 휴식을 취할 수 있는 웰니스 카페",
-        badge: "주차 완비",
-      },
-    ],
+    title: "타이 건식 릴렉싱 케어",
+    duration: "60분 / 90분 / 120분",
+    price: "60,000원부터~",
+    desc: "전신 굳은 근육 이완 및 척추·하체 중심의 맞춤 스트레칭 프로그램",
+    badge: "가성비 추천",
+    highlight: false,
   },
   {
-    category: "🥗 건강식 & 웰니스 다이닝",
-    tag: "HEALTHY FOOD",
-    items: [
-      {
-        name: "정갈한 제철 한정식 다이닝",
-        region: "서울 송파 / 잠실",
-        desc: "자극적이지 않고 속이 편안한 천연 조미료 기반의 프리미엄 보양 한식 코스",
-        badge: "예약 필수",
-      },
-      {
-        name: "오가닉 샐러드 & 단백질 키친",
-        region: "인천 송도 / 연수",
-        desc: "몸의 독소 배출과 가벼운 식단을 선호하는 분들을 위한 프레시 푸드 전문점",
-        badge: "포장/배달 가능",
-      },
-    ],
+    title: "프리미엄 천연 아로마 오일",
+    duration: "60분 / 90분 / 120분",
+    price: "70,000원부터~",
+    desc: "최고급 유기농 아로마 오일을 활용한 부드러운 전신 림프 순환 케어",
+    badge: "인기 만족도",
+    highlight: false,
   },
   {
-    category: "🏨 프라이빗 스테이 & 숙소",
-    tag: "STAY & RELAX",
-    items: [
-      {
-        name: "도심형 부티크 스위트 스테이",
-        region: "서울 마포 / 용산",
-        desc: "방문 홈케어 테라피를 편안하게 누릴 수 있는 쾌적한 위생과 럭셔리 룸 컨디션",
-        badge: "프라이빗 보장",
-      },
-      {
-        name: "오션뷰 힐링 레지던스",
-        region: "인천 영종 / 중구",
-        desc: "탁 트인 바다 전망을 감상하며 완벽한 주말 휴식을 즐길 수 있는 프리미엄 공간",
-        badge: "레이트 체크아웃",
-      },
-    ],
+    title: "감성 딥티슈 스웨디시 케어",
+    duration: "60분 / 90분 / 120분",
+    price: "90,000원부터~",
+    desc: "심신 안정과 체내 노폐물 배출을 돕는 최고급 럭셔리 VIP 테라피",
+    badge: "BEST 시그니처",
+    highlight: true,
+  },
+  {
+    title: "베테랑 힐러 VIP 스페셜 코스",
+    duration: "60분 / 90분 / 120분",
+    price: "140,000원부터~",
+    desc: "숙련된 테라피스트의 1:1 맞춤 전신 체형 밸런스 & 피로회복 집중 프로그램",
+    badge: "VIP 추천",
+    highlight: false,
   },
 ];
 
-export default function PlacesPage() {
+export default function PricesPage() {
   return (
     <div className="bg-[#08080a] text-gray-100 min-h-screen py-10 px-4 font-sans selection:bg-amber-500 selection:text-black">
-      <div className="max-w-4xl mx-auto space-y-10">
+      <div className="max-w-3xl mx-auto space-y-8">
         
         {/* 상단 타이틀 헤더 */}
         <section className="text-center space-y-3">
           <span className="inline-block px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black tracking-widest uppercase">
-            HEALING & HOT PLACES
+            TRANSPARENT PRICE POLICY
           </span>
           <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
-            내 주변 맛집 & 편안한 휴식 명소
+            출장마사지 코스별 이용 가격 안내
           </h1>
-          <p className="text-xs md:text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">
-            서울·경기·인천 지역의 테라피 바디케어와 함께 즐기기 좋은 검증된 맛집, 웰니스 카페, 숙소 가이드입니다.
+          <p className="text-xs md:text-sm text-gray-400 max-w-md mx-auto leading-relaxed">
+            100% 후불제 안심 예약 시스템으로 운영되며, 방문 전 일체의 선입금이나 예약금을 요구하지 않습니다.
           </p>
         </section>
 
-        {/* 메인 안내 배너 */}
-        <section className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 border border-amber-500/30 p-5 md:p-6 rounded-3xl text-center space-y-2 shadow-[0_0_25px_rgba(245,158,11,0.08)]">
-          <p className="text-xs md:text-sm font-bold text-amber-300">
-            ✨ 힐핏 파트너와 함께하는 품격 있는 휴식 플랜
-          </p>
-          <p className="text-[11px] md:text-xs text-gray-400">
-            힐핏은 이용자분들의 건강한 힐링 라이프스타일을 위해 수도권 거점별 명소를 엄선하여 주기적으로 업데이트하고 있습니다.
-          </p>
-        </section>
-
-        {/* 카테고리별 명소 리스트 */}
-        <div className="space-y-8">
-          {placeCategories.map((cat, idx) => (
-            <section key={idx} className="space-y-4">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <h2 className="text-lg font-black text-white flex items-center gap-2">
-                  {cat.category}
-                </h2>
-                <span className="text-[10px] text-amber-400 font-bold tracking-wider">
-                  {cat.tag}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {cat.items.map((item, itemIdx) => (
-                  <div 
-                    key={itemIdx} 
-                    className="bg-[#121216] border border-white/5 hover:border-amber-500/40 rounded-2xl p-5 space-y-2.5 transition-all shadow-md group"
-                  >
-                    <div className="flex justify-between items-start gap-2">
-                      <span className="text-xs font-black text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
-                        {item.badge}
-                      </span>
-                      <span className="text-[11px] text-gray-500 font-medium">
-                        📍 {item.region}
-                      </span>
-                    </div>
-
-                    <h3 className="font-extrabold text-base text-white group-hover:text-amber-400 transition-colors">
-                      {item.name}
-                    </h3>
-
-                    <p className="text-xs text-gray-400 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-
-        {/* 하단 제휴 문의 안내 */}
-        <section className="bg-[#0f0f13] border border-amber-500/30 p-6 rounded-3xl text-center space-y-3">
-          <h3 className="text-base font-black text-white">
-            🤝 힐핏 제휴 명소 등록 및 입점 안내
-          </h3>
-          <p className="text-xs text-gray-400 max-w-md mx-auto leading-relaxed">
-            서울·경기·인천 지역의 웰니스 매장, 맛집, 숙박 업주분들의 제휴 신청을 받고 있습니다.
-          </p>
-          <div>
-            <a 
-              href="tel:0507-1280-3344"
-              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-xs px-5 py-2.5 rounded-xl shadow transition-all transform active:scale-95"
-            >
-              📞 명소 제휴 문의하기 (0507-1280-3344)
-            </a>
+        {/* 100% 안심 보증 배너 */}
+        <section className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-amber-500/10 border border-amber-500/30 p-5 rounded-2xl flex items-center gap-4 shadow-[0_0_20px_rgba(245,158,11,0.08)]">
+          <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-2xl shrink-0">
+            🛡️
+          </div>
+          <div className="space-y-0.5">
+            <h2 className="text-sm font-bold text-amber-300">
+              선입금 ZERO · 100% 도착 후 결제 보장
+            </h2>
+            <p className="text-xs text-gray-400 leading-relaxed">
+              힐핏의 모든 제휴점은 테라피스트 도착 후 현장 결제로 진행되어 안심하고 이용하실 수 있습니다.
+            </p>
           </div>
         </section>
 
-        {/* 홈으로 돌아가기 버튼 */}
-        <div className="text-center pt-2">
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-amber-400 transition-colors"
+        {/* 코스별 가격 카드 리스트 */}
+        <section className="space-y-4">
+          {priceList.map((item, idx) => (
+            <div 
+              key={idx} 
+              className={`bg-[#121216] border rounded-2xl p-5 md:p-6 transition-all shadow-md group relative ${
+                item.highlight 
+                  ? "border-amber-500/60 shadow-[0_0_20px_rgba(245,158,11,0.15)] bg-gradient-to-b from-[#16161b] to-[#121216]" 
+                  : "border-white/5 hover:border-amber-500/40"
+              }`}
+            >
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1.5 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-full border ${
+                      item.highlight 
+                        ? "bg-amber-500 text-black border-amber-400" 
+                        : "bg-amber-500/10 text-amber-400 border-amber-500/30"
+                    }`}>
+                      {item.badge}
+                    </span>
+                    <span className="text-[11px] text-gray-400 font-medium">
+                      ⏱️ {item.duration}
+                    </span>
+                  </div>
+
+                  <h3 className="font-extrabold text-base md:text-lg text-white group-hover:text-amber-400 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+
+                <div className="flex md:flex-col items-center md:items-end justify-between border-t border-white/5 md:border-0 pt-3 md:pt-0">
+                  <span className="text-amber-400 font-black text-lg md:text-xl tracking-tight">
+                    {item.price}
+                  </span>
+                  <span className="text-[10px] text-gray-500 font-medium">
+                    (VAT 포함 / 100% 후불)
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </section>
+
+        {/* 하단 이용 가이드 및 주의사항 */}
+        <section className="bg-[#0f0f13] border border-white/5 p-6 rounded-3xl space-y-3 text-xs text-gray-400 leading-relaxed">
+          <h4 className="font-bold text-white text-sm flex items-center gap-1.5">
+            <span>📌</span> 이용 요금 및 예약 안내 사항
+          </h4>
+          <ul className="list-disc list-inside space-y-1 pl-1">
+            <li>서울, 경기, 인천 전 지역 거점 기준 별도의 이동 추가 요금 없이 정찰제로 이용하실 수 있습니다.</li>
+            <li>심야 시간대 및 일부 외곽 지역의 경우 상황에 따라 약간의 이동 조율이 발생할 수 있습니다.</li>
+            <li>과도한 음주 또는 비매너 이용 시 서비스 제공이 제한될 수 있습니다.</li>
+          </ul>
+        </section>
+
+        {/* 빠른 상담 및 예약 연결 */}
+        <section className="text-center pt-2 space-y-4">
+          <a 
+            href="tel:0507-1280-3344" 
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-sm px-8 py-3.5 rounded-2xl shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all transform active:scale-95"
           >
-            ← 힐핏 메인 홈으로 이동하기
-          </Link>
-        </div>
+            📞 실시간 코스 및 비용 상담하기
+          </a>
+
+          {/* 크롤러 및 사용자용 내부 네비게이션 링크 */}
+          <div className="flex justify-center items-center gap-4 text-xs font-semibold text-gray-400 pt-3">
+            <Link href="/" className="hover:text-amber-400 transition-colors">
+              🏠 메인 홈
+            </Link>
+            <span>•</span>
+            <Link href="/services" className="hover:text-amber-400 transition-colors">
+              📋 이용안내
+            </Link>
+            <span>•</span>
+            <Link href="/reviews" className="hover:text-amber-400 transition-colors">
+              ⭐ 생생후기
+            </Link>
+            <span>•</span>
+            <Link href="/travel" className="hover:text-amber-400 transition-colors">
+              🚗 지역 힐링스팟
+            </Link>
+          </div>
+        </section>
 
       </div>
     </div>

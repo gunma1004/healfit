@@ -2,24 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "서비스 안내 | 맞춤 테라피 & 프리미엄 바디케어 - 힐핏(HealFit)",
-  // 네이버 검색 최적 글자 수 (공백 포함 75~80자) 및 안심 케어 CTR 문구
-  description: "서울·경기·인천 힐핏 서비스 안내! 타이 건식, 천연 아로마, 감성 스웨디시, VIP 맞춤 테라피 코스와 100% 안심 후불제 프로그램을 확인하세요.",
+  // 🌟 핵심 키워드(출장 케어 마사지) 적용
+  title: "출장 케어 마사지 코스 및 프로그램 이용안내 | 힐핏(HealFit)",
+  // 🌟 타이틀과 중복 방지: 시·도 출장마사지 기반 안내 분리
+  description:
+    "서울 경기 인천 출장마사지 서비스 프로그램 상세 안내. 타이 건식, 천연 아로마, 감성 스웨디시, 1:1 VIP 맞춤 코스와 선입금 없는 100% 안심 후불제 시스템을 확인하세요.",
   keywords: [
-    "힐핏 서비스",
+    "출장마사지",
+    "출장 케어 마사지",
     "타이마사지 코스",
     "아로마테라피 프로그램",
     "스웨디시 마사지",
     "방문 홈케어 서비스",
     "바디케어 추천",
-    "1대1 맞춤 테라피"
+    "1대1 맞춤 테라피",
+    "힐핏",
+    "HealFit"
   ],
   alternates: {
     canonical: "https://healfitmassage.netlify.app/services",
   },
   openGraph: {
-    title: "서비스 안내 | 힐핏(HealFit) 맞춤 힐링 테라피 코스",
-    description: "컨디션과 취향에 맞춘 최상의 힐링 프로그램! 타이, 아로마, 스웨디시 프리미엄 바디케어를 만나보세요.",
+    title: "출장 케어 마사지 코스 및 프로그램 이용안내 | 힐핏(HealFit)",
+    description:
+      "서울 경기 인천 출장마사지 맞춤 힐링 프로그램 안내! 타이, 아로마, 스웨디시 프리미엄 1:1 바디케어를 100% 후불제로 만나보세요.",
     url: "https://healfitmassage.netlify.app/services",
     siteName: "힐핏(HealFit)",
     locale: "ko_KR",
@@ -81,7 +87,7 @@ export default function ServicesPage() {
             PREMIUM CARE SERVICE
           </span>
           <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
-            힐핏 코스별 서비스 프로그램 안내
+            출장 케어 마사지 코스별 이용안내
           </h1>
           <p className="text-xs md:text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">
             고객님의 당일 컨디션과 선호에 맞춰 가장 편안하고 완벽한 피로회복 시간을 선사하는 맞춤 테라피 프로그램입니다.
@@ -170,18 +176,23 @@ export default function ServicesPage() {
               href="tel:0507-1280-3344"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-xs px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all transform active:scale-95"
             >
-              📞 1:1 맞춤 코스 실시간 상담하기
+              📞 1:1 맞춤 출장마사지 실시간 상담하기
             </a>
           </div>
         </section>
 
-        {/* 홈으로 돌아가기 */}
-        <div className="text-center pt-2">
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-amber-400 transition-colors"
-          >
-            ← 힐핏 메인 홈으로 이동하기
+        {/* 크롤러 및 사용자용 내부 네비게이션 링크 */}
+        <div className="flex justify-center items-center gap-4 text-xs font-semibold text-gray-400 pt-2">
+          <Link href="/" className="hover:text-amber-400 transition-colors">
+            🏠 메인 홈
+          </Link>
+          <span>•</span>
+          <Link href="/prices" className="hover:text-amber-400 transition-colors">
+            💳 코스&가격 비교
+          </Link>
+          <span>•</span>
+          <Link href="/travel" className="hover:text-amber-400 transition-colors">
+            🚗 지역 힐링스팟
           </Link>
         </div>
 
